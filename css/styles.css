@@ -385,6 +385,7 @@ button,
 [type=reset],
 [type=submit] {
   -webkit-appearance: button;
+  appearance: none;
 }
 button:not(:disabled),
 [type=button]:not(:disabled),
@@ -443,6 +444,7 @@ legend + * {
 [type=search] {
   outline-offset: -2px;
   -webkit-appearance: textfield;
+  appearance: none;
 }
 
 /* rtl:raw:
@@ -464,6 +466,7 @@ legend + * {
 ::file-selector-button {
   font: inherit;
   -webkit-appearance: button;
+  appearance: none;
 }
 
 output {
@@ -10993,4 +10996,33 @@ header.masthead h1, header.masthead .h1 {
 }
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption, #portfolio .container-sm .portfolio-box:hover .portfolio-box-caption, #portfolio .container-md .portfolio-box:hover .portfolio-box-caption, #portfolio .container-lg .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xl .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xxl .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
+}
+#contact #submitButton {
+    background-color: #0056b3 !important;
+    border-color: #0056b3 !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* Efeito ao passar o rato no botão de contacto */
+#contact .btn-primary:hover, 
+#contact #submitButton:hover {
+    background-color: #004085 !important;
+    border-color: #004085 !important;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/* Garante que o texto do link do WhatsApp no rodapé seja azul */
+#contact a.text-dark:hover {
+    color: #0056b3 !important;
+}
+/* Cor oficial do WhatsApp */
+.bi-whatsapp {
+    color: #25D366 !important;
+}
+
+/* Efeito sutil ao passar o mouse */
+a:hover .bi-whatsapp {
+    color: #128C7E !important; /* Um verde um pouco mais escuro */
 }
