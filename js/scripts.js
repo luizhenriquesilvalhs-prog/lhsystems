@@ -57,3 +57,40 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+// Lógica de envio do formulário LHSystems via AJAX
+var form = document.getElementById("my-form");
+
+if (form) {
+    async function handleSubmit(event) {
+        event.preventDefault();
+        var status = document.getElementById("my-form-status");
+        var data = new FormData(event.target);
+        
+        fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                status.innerHTML = "Obrigado! Sua mensagem foi enviada com sucesso.";
+                status.style.color = "#28a745"; // Verde de sucesso
+                form.reset();
+            } else {
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                        status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        status.innerHTML = "Ops! Houve um erro ao enviar.";
+                    }
+                    status.style.color = "#dc3545"; // Vermelho de erro
+                });
+            }
+        }).catch(error => {
+            status.innerHTML = "Ops! Houve um erro de conexão.";
+            status.style.color = "#dc3545";
+        });
+    }
+    form.addEventListener("submit", handleSubmit);
+}
